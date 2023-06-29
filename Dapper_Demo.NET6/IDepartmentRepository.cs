@@ -9,4 +9,14 @@ namespace Dapper_Demo.NET6;
 public interface IDepartmentRepository
 {
     public IEnumerable<Department> GetAllDepartments();
+
+    public Department GetDepartment(int newID);
+
+    public void InsertDepartment(string newDepartmentName);
+
+    public void UpdateDepartment(int newID, string newName);
+
+    public void DeleteDepartment(int newID);
+
+    //public void DeleteDepartments(int startPosition, int endPosition);
 }

@@ -15,7 +15,7 @@ public class ProductRepository : IProductRepository
     //Create data
     public void CreateProduct(string newName, double newPrice, int newCategoryID)
     {
-        _connection.Execute("INSERT INTO products (Name, Price, CategoryID) VALUES (@name, @price, @categoryID);",
+        _connection.Execute("INSERT INTO products (Name, Price, CategoryID ) VALUES (@name, @price, @categoryID);",
             new { name = newName, price = newPrice, categoryID = newCategoryID });
     }
 
@@ -23,6 +23,21 @@ public class ProductRepository : IProductRepository
     public IEnumerable<Product> GetAllProducts()
     {
         return _connection.Query<Product>("SELECT * FROM products;");
+    }
+
+    public IEnumerable<Product> GetAllComputers()
+    {
+        return _connection.Query<Product>("SELECT * FROM products WHERE CategoryID = 1;");
+    }
+
+    public IEnumerable<Product> GetAllAppliances()
+    {
+        return _connection.Query<Product>("SELECT * FROM products WHERE CategoryID = 2;");
+    }
+
+    public IEnumerable<Product> GetAllPhones()
+    {
+        return _connection.Query<Product>("SELECT * FROM products WHERE CategoryID = 3;");
     }
 
     //Update data
